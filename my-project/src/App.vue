@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="nav">
-      <a class="nav-item" v-link="{ path: '/home'}">Home</a>
-      <a class="nav-item" v-link="{ path: '/about'}">About</a>
+      <router-link class="nav-item" to="/home">Home</router-link>
+      <router-link class="nav-item" to="/about">About</router-link>
     </div>
     <div class="cont">
       <router-view></router-view>

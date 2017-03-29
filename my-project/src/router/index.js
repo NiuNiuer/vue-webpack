@@ -5,12 +5,9 @@ import About from '@/components/About';
 
 Vue.use(Router);
 
-const routes = [
-	{ path: '/', component: Home },
-    { path: '/home', component: Home },
-    { path: '/about', component: About }
-];
-
 export default new Router({
-  routes
+	routes: [
+		{ path: '/home', component: Home },
+	    { path: '/about', component: About },
+	]
 });
