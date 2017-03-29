@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,10 +30,13 @@ export default {
   width: 20%;
 }
 .nav-item {
+  display: block;
   width: 100%;
-  height: 30px;
+  line-height: 30px;
   background-color: gray;
   margin-top: 10px;
+  text-decoration: none;
+  color: #fff;
 }
 .cont {
   float: right;
