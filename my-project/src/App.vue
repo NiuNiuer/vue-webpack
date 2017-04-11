@@ -23,24 +23,23 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 20px;
 }
 .nav {
-  float: left;
-  width: 20%;
+  width: 100%;
+  height: 40px;
 }
 .nav-item {
-  display: block;
-  width: 100%;
-  line-height: 30px;
+  display: inline-block;
+  width: 40%;
+  line-height: 40px;
   background-color: gray;
-  margin-top: 10px;
   text-decoration: none;
   color: #fff;
 }
 .cont {
-  float: right;
-  width: 80%;
+  margin-top: 20px;
+  width: 100%;
   color: lightblue;
 }
 </style>
