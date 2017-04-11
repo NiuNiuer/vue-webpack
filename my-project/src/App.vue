@@ -36,6 +36,7 @@ export default {
   background-color: gray;
   text-decoration: none;
   color: #fff;
+  font-size: 30px;
 }
 .cont {
   margin-top: 20px;

@@ -10,3 +10,15 @@
 		name: 'about'
 	}
 </script>
+
+<style scoped>
+div {
+	margin: 0 10px;
+}
+h1 {
+	font-size: 28px;
+}
+p {
+	font-size: 24px;
+}
+</style>

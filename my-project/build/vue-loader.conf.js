@@ -1,5 +1,6 @@
 var utils = require('./utils')
 var config = require('../config')
+var px2rem = require('postcss-px2rem')
 var isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -8,5 +9,11 @@ module.exports = {
       ? config.build.productionSourceMap
       : config.dev.cssSourceMap,
     extract: isProduction
-  })
+  }),
+  postcss: function() {
+      return [px2rem({remUnit: 7.5})];
+  },
+  vue: {
+    postcss: [require('postcss-px2rem')({remUnit: 7.5})]
+  }
 }
