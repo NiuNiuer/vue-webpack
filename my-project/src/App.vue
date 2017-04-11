@@ -23,11 +23,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding: 20px;
 }
 .nav {
+  position: fixed;
+  padding-top: 20px;
+  padding-bottom: 10px;
   width: 100%;
   height: 40px;
+  background-color: #fff;
+  z-index: 10;
 }
 .nav-item {
   display: inline-block;
@@ -39,7 +43,8 @@ export default {
   font-size: 30px;
 }
 .cont {
-  margin-top: 20px;
+  position: absolute;
+  top: 60px;
   width: 100%;
   color: lightblue;
 }

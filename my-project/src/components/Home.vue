@@ -1,76 +1,57 @@
 <template>
-  <div class="home">
-    <h1>{{ msg }}</h1>
-    <ul>
-      <li v-for="article in articles">
-        <div class="m-img inl-block">
-          <img v-bind:src="article.images.small"/>
-        </div>
-        <div class="m-content inl-block">
-          <div>{{article.title}}</div>
-          <div>年份：{{article.year}}</div>
-          <div>类型：{{article.subtype}}</div>
-        </div>
-      </li>
-    </ul>
+  <div class="home" id="home">
+    <p class="example-list-item" v-for="item in list" v-text="item"></p>
+    <infinite-loading :on-infinite="onInfinite" :distance="distance" ref="infiniteLoading"></infinite-loading>
   </div>
 </template>
 
 <script>
-
 // mounted 钩子函数  这里去请求豆瓣数据
+import InfiniteLoading from 'vue-infinite-loading';
 
 export default {
   name: 'home',
   data () {
     return {
-      msg: '电影列表',
-      articles:[]
+      distance: 100,
+      list: []
     }
   },
-  created:function(){  //这里mounted和created生命周期函数区别
-     this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=10', {}, {
-        headers: {
-
-        },
-        emulateJSON: true
-    }).then(function(response) {
-      // 这里是处理正确的回调
-        console.log(response);
-        this.articles = response.data.subjects
-        // this.articles = response.data["subjects"] 也可以
-
-    }, function(response) {
-        // 这里是处理错误的回调
-        console.log(response)
-    });
+  components: {
+    InfiniteLoading,
+  },
+  methods: {
+    onInfinite: function () {
+      if (this.list.length > 200) {
+        this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
+      } else {
+        setTimeout(function () {
+          var temp = [];
+          for (var i = this.list.length; i <= this.list.length + 10; i++){
+            temp.push(i);
+          }
+          this.list = this.list.concat(temp);
+          this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+        }.bind(this), 1000);
+      }
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  font-size: 28px;
-}
-ul{
-  list-style: none;
+.example-list-item{
   margin: 0;
-  padding: 0;
-  font-size: 24px;
+  padding: 0 10px;
+  font-size: 30px;
+  line-height: 40px;
+  color: #666;
+  background-color: #fafafa;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #e3e3e3;
 }
-ul li{
-border-bottom: 1px solid #999;
-padding: 10px 0;
-text-align: center;
-}
-
-.inl-block{
-display: inline-block;
-}
-
-img{
-  width: 65px;
-  height: 100px;
+.example-list-item::before{
+  content: 'Line: ';
 }
 </style>
