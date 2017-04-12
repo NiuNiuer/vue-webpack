@@ -27,7 +27,7 @@ export default {
       } else {
         setTimeout(function () {
           var temp = [];
-          for (var i = this.list.length; i <= this.list.length + 10; i++){
+          for (var i = this.list.length; i <= this.list.length + 20; i++){
             temp.push(i);
           }
           this.list = this.list.concat(temp);
